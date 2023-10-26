@@ -1,6 +1,7 @@
+host: http://localhost:8080
 kafka:
   bootstrapServer: localhost:9092
   topic: products
 
 files:
-  basePath: ../images/products/
+  basePath: /Users/bijaysharma/Documents/zocket/images

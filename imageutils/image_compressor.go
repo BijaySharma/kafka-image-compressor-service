@@ -35,9 +35,8 @@ func CompressImage(url string) (string, error) {
 	newImg := imaging.Resize(img, 100, 0, imaging.Lanczos)
 
 	// Create new file with unique name in local directory
-	filename := uuid.New().String()
-	newFilename := fmt.Sprintf("%s_compressed%s", &filename, ".jpg")
-	filepath := filepath.Join(viper.GetString("files.basePath"), newFilename)
+	fileName := fmt.Sprintf("%s%s", uuid.New().String(), ".jpg")
+	filepath := filepath.Join(viper.GetString("files.basePath"), fileName)
 	file, err := os.Create(filepath)
 	if err != nil {
 		return "", err
@@ -50,5 +49,5 @@ func CompressImage(url string) (string, error) {
 		return "", err
 	}
 
-	return filepath, nil
+	return fileName, nil
 }
