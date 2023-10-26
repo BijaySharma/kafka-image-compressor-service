@@ -1,0 +1,6 @@
+kafka:
+  bootstrapServer: localhost:9092
+  topic: products
+
+files:
+  basePath: ../images/products/
