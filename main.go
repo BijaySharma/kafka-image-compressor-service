@@ -80,8 +80,21 @@ func main() {
 			compressedImages[i] = compressedImagePath
 		}
 		logrus.Info("Compressed Images: ", compressedImages)
-		// Update compressed_product_images table
 
+		// Update compressed_product_images table
+		logrus.Info("Updating compressed_product_images table")
+		url = fmt.Sprintf("%s%s%s", host, "/products/compressed-images/", string(msg.Value))
+		resp, err = utils.MakeRequest(url, "POST", compressedImages)
+		if err != nil {
+			logrus.Errorf("error making request: %v", err)
+			return
+		}
+		if resp.StatusCode != 201 {
+			logrus.Errorf("error updating compressed_product_images table: %v", err)
+			return
+		}
+
+		logrus.Info("Successfully Compressed Images and Updated compressed_product_images table for Product ID ", string(msg.Value))
 	})
 
 }
