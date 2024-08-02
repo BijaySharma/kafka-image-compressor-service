@@ -4,4 +4,4 @@ kafka:
   topic: products
 
 files:
-  basePath: /Users/bijaysharma/Documents/zocket/images
+  basePath: /Users/bijaysharma/Documents/zocket/assignment/images
